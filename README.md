@@ -14,7 +14,7 @@ In course 1 we talked about open source software and the motivation and methods 
 1. Filesystem layout, partitions
 1. Monitoring utilities
 
-* You will learn what it’s like to work on Linux system, and get a good understanding of the essential skills you need when you work on a daily basis with Linux systems.
+> You will learn what it’s like to work on Linux system, and get a good understanding of the essential skills you need when you work on a daily basis with Linux systems.
 
 
 #### ***Kudos!!!***

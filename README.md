@@ -34,8 +34,8 @@ In course 1 we talked about open source software and the motivation and methods 
 * Access terminal windows for command line work and deployment choices
 * Access documentation and help resources for Linux systems, including man, info, help, and the --help option
 
-***Graded:*** Linux and the Operating System
-***Graded:*** Graphical Environments and Interfaces
+***Graded:*** Linux and the Operating System\
+***Graded:*** Graphical Environments and Interfaces\
 ***Graded:*** Getting Help
 
 
@@ -55,8 +55,8 @@ In course 1 we talked about open source software and the motivation and methods 
 * Discuss the main directory structures used in Linux and their purposes
 * Describe how partitions are used and how to construct, format, and manipulate them, and how to establish good partitioning schemes
 
-***Graded:*** Text Editors
-***Graded:*** Shells, Bash, and the Command Line
+***Graded:*** Text Editors\
+***Graded:*** Shells, Bash, and the Command Line\
 ***Graded:*** Filesystem Layout, Partitions, Paths, and Links
 
 
@@ -73,8 +73,8 @@ In course 1 we talked about open source software and the motivation and methods 
 * Discuss how the system works with network devices and how they are identified and named
 * Configure and bring up or down network interfaces and networks
 
-***Graded:*** System Initialization
-***Graded:*** Memory
+***Graded:*** System Initialization\
+***Graded:*** Memory\
 ***Graded:*** Networking
 
 
@@ -91,7 +91,7 @@ In course 1 we talked about open source software and the motivation and methods 
 * Discuss how udev works to handle changes in system hardware and load device drivers at runtime
 * Use systemctl to start and stop services and enable or disable their launch at boot
 
-***Graded:*** System Monitoring
+***Graded:*** System Monitoring\
 ***Graded:*** Kernel Modules and Device Management
 
 
@@ -111,7 +111,7 @@ In course 1 we talked about open source software and the motivation and methods 
 * Examine and set the read/write/execute access rights of files, respecting ownership and group membership.
 * Explain the role of the root account and the use of both su and sudo.
 
-***Graded:*** System Administration
+***Graded:*** System Administration\
 ***Graded:*** Users and Groups
 
 

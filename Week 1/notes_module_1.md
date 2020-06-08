@@ -46,7 +46,7 @@ by The Linux Foundation
 	* And a ***desktop manager*** which controls the entire desktop; the two most common choices in linux are ***GNOME*** and ***KDE***
 
 
-##### History of Linux
+###### History of Linux
 
 * Linux needed many other components in order to constitute a complete operating system, most of which were supplied by the GNU project in an early stage, including compilers, debuggers, etc
 * The first really usable Linux distributions, started around 1992 and they're still in use; in particular, Slackware, Debian, the predecessor of SUSE and Red Hat.
@@ -55,7 +55,7 @@ by The Linux Foundation
 * OSDL merged with the Free Standards Group in 2007 to form The Linux Foundation, with a base mission to promote, protect, improve and standardize Linux.
 * There was a big push in 2000 when IBM invested over a billion dollars in Linux, and when Oracle first imported its database to Linux, and ever since then, it has grown exponentially.
 
-##### UNIX and Linux
+###### UNIX and Linux
 
 * We will consider the relationship of Unix and Linux
 * Technically, Linux is only the kernel. Everything else that makes up the full operating system comes from a variety of different sources
@@ -78,7 +78,7 @@ by The Linux Foundation
 
 * Linux is very open and accommodates change from all directions, this is actually helping avoid the kind of fracturing that took place in Unix
 
-##### Linux Distribution
+###### Linux Distribution
 
 * There are many Linux distributions, literally hundreds or even thousands of them, though there's only a small number that are used in large numbers, and they vary by the usage, the hardware, the audience and what kind of support that you have
 * So, what does the distribution do? 
@@ -94,7 +94,7 @@ by The Linux Foundation
 		* CentOS
 		* Scientific Linux
 		* Fedora
-		* Oracle Linux; 
+		* Oracle Linux
 	* Debian, which includes
 		* Ubuntu
 		* Linux Mint

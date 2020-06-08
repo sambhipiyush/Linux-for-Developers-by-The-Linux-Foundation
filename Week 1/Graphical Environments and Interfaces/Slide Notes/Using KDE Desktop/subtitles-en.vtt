@@ -1,0 +1,213 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.670
+We're now going to show you what a KDE desktop would look like running on CentOS 7.
+
+2
+00:00:06.670 --> 00:00:11.730
+Most people running CentOS are using the GNOME desktop,
+
+3
+00:00:11.730 --> 00:00:14.330
+but we'll show you what it looks like for KDE,
+
+4
+00:00:14.330 --> 00:00:18.240
+and it would not look that much different on other distributions,
+
+5
+00:00:18.240 --> 00:00:23.505
+just like the GNOME desktop doesn't look very different on other distributions.
+
+6
+00:00:23.505 --> 00:00:30.005
+So, here I have a GNOME desktop running and I'm going to install KDE on here.
+
+7
+00:00:30.005 --> 00:00:38.560
+So, the easiest way to do that is with "sudo yum install KDE".
+
+8
+00:00:41.810 --> 00:00:45.640
+Oh, I'm sorry, it's "groupinstall" [sudo yum groupinstall KDE].
+
+9
+00:00:47.520 --> 00:00:51.180
+Okay. You'll see there is quite a bit of stuff,
+
+10
+00:00:51.180 --> 00:00:58.270
+92 megabyte download with 274 megabytes of installed size,
+
+11
+00:00:58.270 --> 00:01:00.920
+but it goes pretty quickly.
+
+12
+00:01:02.030 --> 00:01:08.290
+Then, what I will have to do once this is finished installing, is log
+
+13
+00:01:08.290 --> 00:01:13.860
+out of the GNOME desktop and then log into the KDE desktop,
+
+14
+00:01:13.860 --> 00:01:19.830
+and then we'll play around a little bit, to see what's going on.
+
+15
+00:01:19.830 --> 00:01:22.845
+It's done with its installation essentially,
+
+16
+00:01:22.845 --> 00:01:25.960
+doing a little bit of setup and verification.
+
+17
+00:01:25.960 --> 00:01:28.160
+Fine. So, let's log out.
+
+18
+00:01:28.160 --> 00:01:30.230
+So, I go to the upper right corner,
+
+19
+00:01:30.230 --> 00:01:33.100
+I click on "student" and log out.
+
+20
+00:01:37.150 --> 00:01:42.720
+I'm still using the GDM login screen,
+
+21
+00:01:42.720 --> 00:01:47.900
+rather than the KDM, but that doesn't really matter for showing the desktop itself.
+
+22
+00:01:47.900 --> 00:01:50.930
+So I say, I give my password,
+
+23
+00:01:50.930 --> 00:01:53.675
+and then, here, next to the "Sign in",
+
+24
+00:01:53.675 --> 00:02:00.080
+there's a gear wheel where I can pick which I want to use, which desktop.
+
+25
+00:02:00.080 --> 00:02:06.030
+So, I'm picking KDE Plasma Workspace, and I sign in.
+
+26
+00:02:07.460 --> 00:02:11.580
+This is what a totally unconfigured,
+
+27
+00:02:11.580 --> 00:02:15.175
+basically, KDE desktop, would look like.
+
+28
+00:02:15.175 --> 00:02:17.580
+So, it is taking a little bit to start up,
+
+29
+00:02:17.580 --> 00:02:22.675
+a little bit of time because it's the first time we've run the KDE desktop.
+
+30
+00:02:22.675 --> 00:02:26.620
+If I click on the lower left corner here,
+
+31
+00:02:26.620 --> 00:02:33.075
+I get to see a number of basic menus that I can go to.
+
+32
+00:02:33.075 --> 00:02:36.200
+If I go to "Applications",
+
+33
+00:02:36.240 --> 00:02:44.920
+you see them organized by different qualities, under "Utilities", for instance.
+
+34
+00:02:44.920 --> 00:02:48.135
+I can see "Text Editor",
+
+35
+00:02:48.135 --> 00:02:50.680
+all sorts of things.
+
+36
+00:02:52.460 --> 00:02:56.790
+If I wanted to run, for instance,
+
+37
+00:02:56.790 --> 00:03:01.780
+a terminal window, I can right click on the desktop and pick Konsole,
+
+38
+00:03:01.780 --> 00:03:07.385
+and, by default, the fonts are a little bit not
+
+39
+00:03:07.385 --> 00:03:12.660
+very bright, but then I can just go ahead and configure to my heart's content.
+
+40
+00:03:12.660 --> 00:03:17.390
+If I look down on the lower right here, there's a calendar and the time,
+
+41
+00:03:17.390 --> 00:03:20.180
+if I click on that, I get a whole calendar.
+
+42
+00:03:20.180 --> 00:03:24.880
+Next to that, I get information about my networking,
+
+43
+00:03:25.100 --> 00:03:30.610
+the sound, here, okay, and I can control various things,
+
+44
+00:03:30.610 --> 00:03:32.095
+and here's the settings.
+
+45
+00:03:32.095 --> 00:03:33.860
+That's a clipboard, I'm sorry,
+
+46
+00:03:33.860 --> 00:03:37.390
+where I can cut and paste things into.
+
+47
+00:03:37.790 --> 00:03:40.275
+If I want to log out,
+
+48
+00:03:40.275 --> 00:03:46.840
+I go down to the icon on the lower left here, and then I just go to "Leave".
+
+49
+00:03:48.730 --> 00:03:53.790
+Then, here I can pick on "Log out" or "Shut down", let's say.
+
+50
+00:03:53.790 --> 00:03:56.860
+So, let's go all the way to the "Shut down",
+
+51
+00:03:58.010 --> 00:04:01.450
+and I'll turn off the computer.
+
+52
+00:04:02.210 --> 00:04:05.295
+Okay. So, that's what I wanted to show.
+
+53
+00:04:05.295 --> 00:04:09.280
+KDE and GNOME on CentOS.

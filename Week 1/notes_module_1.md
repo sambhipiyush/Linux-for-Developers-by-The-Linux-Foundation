@@ -108,7 +108,84 @@ by The Linux Foundation
 
 ### Graphical Layer Interfaces
 
+* There are three basic layers and each one has a choice of options for what you can use
+* These are 
+	- The X Window System
+		- The X Window system, usually just called X these days, has a long history, it goes back to at least 1984
+		- In its early incarnations, it was designed to handle displaying the results on remote computers at your local workstation or X client, the X terminal, as it was called
+		- All-in-all, it was a ***communication protocol***.
+		- It wasn't originally designed to just be run on an individual computer
+		- X function is relatively simple, it handles
+			- The keyboard
+			- The pointer
+			- It displays the result on the screen
+		- X nomenclature
+			- The server is what runs on your local machine, which handles the input and display
+			- the client is the application being displayed and is as likely to be anywhere on the network and worldwide internet as it is on the local machine
+			- This differs from the usual server/client distinction you may be used to, where the server is a remote machine, and the client is local machine.
+		- Criticism of X:
+			- X grew out of a network paradigm, sometimes it's criticized as having high overhead because it's using the whole network stack, even if it's on a local workstation or a laptop
+				- But that's no longer the truth, X uses Unix domain sockets, shared memory, and other features
+				- Such that that criticism really doesn't hold any weight in modern systems
+		- Alternatives to X
+			- New alternatives, in particular, gaining popularity is ***Wayland***
+			- It has been the default in Fedora for quite some time now, in the Fedora distribution
+			- Wayland is far more secure than X
+
+	- The Window Manager
+		- The window manager controls things like the appearance of 
+			- A window
+			- The title bar
+			- Scroll bars look like
+			- It handles multiple desktops, which is a very common feature used in Linux systems
+			- Other visual effects
+		- Different types of window managers
+			- For GNOME3, the default is ***mutter***
+			- For KDE it is ***kwin***
+			- Other ones in use include ***metacity***, ***fvwm***, ***fluxbox***, ***enlightenment***, ***sawfish***,  and ***xfwm***
+			* Some are very flashy, some are rather minimal and work very quickly.
+
+	- The Desktop Manager
+		- It is what the user actually sees and it controls what's on the desktop
+		- It sits above X and the window manager
+		- This provides 
+			- taskbars
+			- menu bars
+			- drop-down menus
+			- controls drag
+			- drop between applications
+			- menus
+			- icons
+			- program launchers
+			- all the stuff that any experienced computer user is used to on any graphical desktop environment
+		- Most common ones are 
+			1. GNOME --> heavily dependent on the gtk set of graphical libraries
+			1. KDE --> built upon QT libraries
+			1. Other exist including XFCE, or XFCE 4
+		- You can generally choose which desktop you want when you're doing the installation
+		- If you feel like installing the software for both, you can usually choose between, let's say GNOME or KDE when you boot the system
 
 
 #### Title: Getting Help
+
+### Getting Help
+
+* There are three basic command line tools people use to get documentation
+	- ***man*** Pages or manual pages
+		- Basically, everything on the system must have a man page as a general rule
+	- info
+		- ***info*** is a hyperlinked system of help, that's probably the first hyperlink system of help ever used
+		- It comes from the Free Software Foundation's GNU project and then most commands have a help option you can give, which tells you a basic syntax of the command and its options
+	- --help and help
+		- The shell interpreter has a ***help*** command which you can type help and in the name of a command and, for a lot of the commands, you can get basic documentation that way.
+
+### Graphical Interfaces: GNOME and KDE
+
+* GNOME
+	* If you are running a GNOME desktop you can invoke graphical help system directly from the command line by typing:
+		* gnome-help
+* KDE
+	* If you are running a KDE desktop you can invoke graphical help system directly from the command line by typing:
+		* ***khelpcenter***
+			* NOTE : the command may be ***kdehelpcenter*** instead
 

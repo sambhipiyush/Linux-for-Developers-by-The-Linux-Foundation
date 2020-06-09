@@ -1,0 +1,377 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.215
+Let's get some experience working with fdisk
+
+2
+00:00:04.215 --> 00:00:09.470
+and examining and modifying partitions on a Fedora 25 virtual machine.
+
+3
+00:00:09.470 --> 00:00:14.490
+This machine has a 40 gigabyte disk, of which only 20 gigabytes are being used,
+
+4
+00:00:14.490 --> 00:00:17.755
+so let's run "fdisk /dev/sda".
+
+5
+00:00:17.755 --> 00:00:21.580
+You'll notice I am logged in as root here, instead of a normal user,
+
+6
+00:00:21.580 --> 00:00:24.220
+it'll make our life much easier.
+
+7
+00:00:24.220 --> 00:00:26.090
+If I type "m" for help,
+
+8
+00:00:26.090 --> 00:00:28.360
+I will see all the possible commands,
+
+9
+00:00:28.360 --> 00:00:30.100
+but it's a rather long list,
+
+10
+00:00:30.100 --> 00:00:32.295
+I encourage you to look at.
+
+11
+00:00:32.295 --> 00:00:35.940
+But let's just experiment with some of them.
+
+12
+00:00:35.940 --> 00:00:40.055
+So, "p" means print and it's showing me I have
+
+13
+00:00:40.055 --> 00:00:45.639
+a 40 gigabyte disk, as I said, of which there's 19G in a Linux partition.
+
+14
+00:00:45.639 --> 00:00:49.100
+So, the files on the system are all in one big partition,
+
+15
+00:00:49.100 --> 00:00:52.790
+nothing fancy, and there's a one gigabyte swap partition.
+
+16
+00:00:52.790 --> 00:00:55.190
+So, let's say I want to create a new one,
+
+17
+00:00:55.190 --> 00:01:00.079
+I type "n" for new, and I'll make it a primary partition,
+
+18
+00:01:00.079 --> 00:01:03.575
+and I'll take the default number of 3,
+
+19
+00:01:03.575 --> 00:01:05.780
+and for the first sector,
+
+20
+00:01:05.780 --> 00:01:07.640
+I'll just take the default,
+
+21
+00:01:07.640 --> 00:01:11.550
+which is to start right after the second partition.
+
+22
+00:01:11.550 --> 00:01:18.350
+I could give the last sector to give the size, that's a little bit complicated,
+
+23
+00:01:18.350 --> 00:01:21.420
+but I can also specify the size in gigabytes.
+
+24
+00:01:21.420 --> 00:01:26.750
+So, say "+5G" and it's telling me it's
+
+25
+00:01:26.750 --> 00:01:33.240
+making a partition of 3 of type Linux and of 5GiB.
+
+26
+00:01:33.240 --> 00:01:34.840
+If I want to modify the type,
+
+27
+00:01:34.840 --> 00:01:40.780
+I would type lowercase "t" for type,
+
+28
+00:01:40.780 --> 00:01:44.390
+and let's say I say partition 3.
+
+29
+00:01:44.390 --> 00:01:47.290
+But then I have to know the actual index codes.
+
+30
+00:01:47.290 --> 00:01:49.890
+So, if I type capital "L",
+
+31
+00:01:49.890 --> 00:01:53.565
+it tells me all the different possible partitions I can set up.
+
+32
+00:01:53.565 --> 00:01:56.750
+In many cases, it really doesn't matter what you
+
+33
+00:01:56.750 --> 00:02:00.019
+put in the system. Once you format the partition,
+
+34
+00:02:00.019 --> 00:02:01.960
+the system will just look at it anyway.
+
+35
+00:02:01.960 --> 00:02:05.930
+But you see here's 83 as a standard Linux partition,
+
+36
+00:02:05.930 --> 00:02:08.955
+so I'll just leave it at that with 83,
+
+37
+00:02:08.955 --> 00:02:11.980
+and "p" is just a normal partition.
+
+38
+00:02:11.980 --> 00:02:18.305
+I have to write out the partition scheme with "w", and that worked,
+
+39
+00:02:18.305 --> 00:02:23.305
+but you notice the system says it may have some trouble using this partition,
+
+40
+00:02:23.305 --> 00:02:27.095
+unless I reboot or run "partprobe" or "kpartx".
+
+41
+00:02:27.095 --> 00:02:31.250
+So, let's run "partprobe" for partition probe "-s",
+
+42
+00:02:31.250 --> 00:02:35.769
+and it's telling me it's sort of 3 partitions and we do "fdisk",
+
+43
+00:02:35.769 --> 00:02:41.440
+"-l /dev/sda", and that's fine.
+
+44
+00:02:41.440 --> 00:02:43.550
+If I want, I can put a filesystem on
+
+45
+00:02:43.550 --> 00:02:53.835
+that partition with "mkfs.ext4 /dev/sda3".
+
+46
+00:02:53.835 --> 00:02:57.945
+I think I said it had a filesystem on it just from previous
+
+47
+00:02:57.945 --> 00:03:00.135
+work that I did. It really didn't.
+
+48
+00:03:00.135 --> 00:03:03.090
+So, it's a relic of the past.
+
+49
+00:03:03.090 --> 00:03:06.585
+So, that's how I would do things from the command line.
+
+50
+00:03:06.585 --> 00:03:10.280
+There's a graphical utility called "gparted" that you
+
+51
+00:03:10.280 --> 00:03:13.540
+can find for almost all distributions,
+
+52
+00:03:13.540 --> 00:03:17.365
+though it often doesn't come in the default set of packages.
+
+53
+00:03:17.365 --> 00:03:23.960
+So, let me run "gparted" and that gives you a graphical display of what's going on.
+
+54
+00:03:24.010 --> 00:03:27.240
+So, you can see here's my first partition,
+
+55
+00:03:27.240 --> 00:03:29.340
+and then here's my swap partition,
+
+56
+00:03:29.340 --> 00:03:32.540
+and then here's the new partition that I made,
+
+57
+00:03:32.540 --> 00:03:34.900
+so let's make that bigger.
+
+58
+00:03:34.900 --> 00:03:37.930
+So, you can do a number of things with "gparted".
+
+59
+00:03:37.930 --> 00:03:40.210
+First, let me make another partition,
+
+60
+00:03:40.210 --> 00:03:46.215
+so here I go to my allocated space there and then I click on Partition, I say New,
+
+61
+00:03:46.215 --> 00:03:49.425
+and I can control all this graphically,
+
+62
+00:03:49.425 --> 00:03:54.320
+so I'll make it that's about eight gigabytes or so,
+
+63
+00:03:54.320 --> 00:03:58.280
+and I'll just say add, and I can control the type of filesystem,
+
+64
+00:03:58.280 --> 00:04:00.040
+I can give a name, and a label,
+
+65
+00:04:00.040 --> 00:04:02.640
+but I won't do any of that now,
+
+66
+00:04:02.640 --> 00:04:06.110
+and then when I actually click on the arrow up here,
+
+67
+00:04:06.110 --> 00:04:08.254
+the changes will be applied.
+
+68
+00:04:08.254 --> 00:04:13.610
+It's always going to warn you when you try to make a change in the partition table,
+
+69
+00:04:13.610 --> 00:04:17.625
+that it's kind of a potentially dangerous operation.
+
+70
+00:04:17.625 --> 00:04:20.420
+Now, there's other things I can do here,
+
+71
+00:04:20.420 --> 00:04:24.230
+this is where the graphical utilities are
+
+72
+00:04:24.230 --> 00:04:27.250
+useful, because these things are hard to do from the command line.
+
+73
+00:04:27.250 --> 00:04:30.710
+Suppose I click on the new one I just made,
+
+74
+00:04:30.710 --> 00:04:33.735
+you notice I still have space after that partition,
+
+75
+00:04:33.735 --> 00:04:39.940
+I can click on partition and then I can go resize and move and I can move it,
+
+76
+00:04:39.940 --> 00:04:42.970
+so I say to the end of the hard disk.
+
+77
+00:04:45.280 --> 00:04:50.745
+I can click on check mark, save,
+
+78
+00:04:50.745 --> 00:04:53.750
+yes and this would be slow if
+
+79
+00:04:53.750 --> 00:04:57.690
+the partition actually contains some data, because it has to copy everything over,
+
+80
+00:04:57.690 --> 00:05:00.185
+but since it's pretty empty,
+
+81
+00:05:00.185 --> 00:05:02.900
+the utility is smart enough to do it quickly,
+
+82
+00:05:02.900 --> 00:05:07.640
+I can also do things like I can change the size,
+
+83
+00:05:07.640 --> 00:05:12.530
+so let me look at this partition 3 we made at the command line,
+
+84
+00:05:12.530 --> 00:05:15.350
+and I'll do the resize and move it.
+
+85
+00:05:15.350 --> 00:05:17.520
+Last time, I just moved it.
+
+86
+00:05:17.520 --> 00:05:18.890
+This time let me make it bigger,
+
+87
+00:05:18.890 --> 00:05:26.430
+that has worked just fine.
+
+88
+00:05:26.430 --> 00:05:28.765
+You can look at the details if you want,
+
+89
+00:05:28.765 --> 00:05:31.210
+telling you everything that it did.
+
+90
+00:05:31.210 --> 00:05:34.370
+It had to check the filesystem for errors,
+
+91
+00:05:34.370 --> 00:05:36.385
+increase the partition first,
+
+92
+00:05:36.385 --> 00:05:39.100
+and then grow the filesystem to fill the partition,
+
+93
+00:05:39.100 --> 00:05:41.510
+and then it does some other checks, etc.
+
+94
+00:05:41.510 --> 00:05:49.980
+So, that's some basic experience in how to manipulate partition tables on a basic system.

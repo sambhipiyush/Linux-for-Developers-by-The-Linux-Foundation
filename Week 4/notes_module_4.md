@@ -7,7 +7,7 @@ by The Linux Foundation
 
 #### Title: System Monitoring
 
-### system monitoring : Overview
+### System Monitoring : Overview
 
 * There are many command-line utilities used in Linux routinely to monitor the system's performance.
 * There are straightforward everyday utilities, such as **top**, which lets you manage CPU usage and see what processes are taking up the most resources on your system
@@ -192,3 +192,6 @@ by The Linux Foundation
 * The minor number is either the instance of that device or the way it's being used
 	* It is used only by the device driver to differentiate between the different devices it may control
 
+
+> Rules for device naming are located in the /etc/udev/rules.d directory
+> Ideally, you would like to register devices with just their names. However, we cannot just get rid of major and minor numbers, as POSIX requires them.

@@ -1,0 +1,133 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.486
+We will now demonstrate how you can use GRUB to pick different operating systems,
+
+2
+00:00:06.486 --> 00:00:12.784
+kernels, or specify kernel command line parameters to boot your system with.
+
+3
+00:00:12.784 --> 00:00:20.119
+So, let's start up a CentOS 7 virtual machine using VMWare.
+
+4
+00:00:25.193 --> 00:00:31.128
+Okay, and we can pick at the GRUB screen which kernel we want to start.
+
+5
+00:00:31.128 --> 00:00:33.005
+I will pick this third one here.
+
+6
+00:00:33.005 --> 00:00:38.643
+And if I would just to hit "Return", it would start up normally and running that kernel.
+
+7
+00:00:38.643 --> 00:00:43.654
+I would like to do something a little more ambitious, so I'll hit "e" for edit,
+
+8
+00:00:43.654 --> 00:00:48.273
+and then I'll scroll down to what we call the kernel command line, and
+
+9
+00:00:48.273 --> 00:00:53.237
+that's the one that starts with Linux 16 here, and I'll do two things.
+
+10
+00:00:53.237 --> 00:00:57.370
+At the end of the kernel command line, I'll append the 3.
+
+11
+00:00:57.370 --> 00:01:04.866
+Which means go to runlevel three or pure text and no graphical login screen.
+
+12
+00:01:04.866 --> 00:01:11.020
+And then I'll also comment out the words here quiet.
+
+13
+00:01:11.020 --> 00:01:15.120
+That means it will show all the kernel boot messages instead
+
+14
+00:01:15.120 --> 00:01:19.060
+of just some nice little graphical screen when it boots.
+
+15
+00:01:19.060 --> 00:01:24.064
+Which I can also disable by commenting out the previous parameter,
+
+16
+00:01:24.064 --> 00:01:27.502
+RGB, which is also for graphical interface.
+
+17
+00:01:27.502 --> 00:01:30.314
+And then I'll hit Ctrl-x to start,
+
+18
+00:01:30.314 --> 00:01:33.903
+as it says in the help messages at the bottom here.
+
+19
+00:01:33.903 --> 00:01:36.490
+And so now this system is starting,
+
+20
+00:01:36.490 --> 00:01:41.330
+you're seeing every single message that happens when it starts.
+
+21
+00:01:41.330 --> 00:01:48.667
+And I will go to a pure virtual terminal or command line login screen.
+
+22
+00:01:48.667 --> 00:01:51.602
+You see it's taken about 8 seconds so
+
+23
+00:01:51.602 --> 00:01:56.186
+far to get here, 13 seconds now to get the final part, and
+
+24
+00:01:56.186 --> 00:02:01.250
+now I'm at a boot screen, so I'll say "coop", I'm sorry, "student".
+
+25
+00:02:01.250 --> 00:02:03.752
+And I'll give the "student" password.
+
+26
+00:02:03.752 --> 00:02:07.618
+And we're fully up and normally running.
+
+27
+00:02:07.618 --> 00:02:13.785
+Now, if I wanted to start the graphical console, I'll use a command
+
+28
+00:02:13.785 --> 00:02:18.568
+we'll discuss in the next section, I say "sudo
+
+29
+00:02:18.568 --> 00:02:24.125
+systemctl start gdm", which is the GNOME display manager.
+
+30
+00:02:24.125 --> 00:02:29.783
+So, I'm going to start that up and that will bring up a graphical login screen.
+
+31
+00:02:29.783 --> 00:02:31.046
+And there we go.
+
+32
+00:02:31.046 --> 00:02:34.822
+And I could type in my username and password and I'll be going.
+
+33
+00:02:34.822 --> 00:02:39.977
+So that's how you use GRUB to control your booting procedure.

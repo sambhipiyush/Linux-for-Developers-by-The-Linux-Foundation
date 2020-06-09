@@ -1,0 +1,237 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.280
+So, let's examine how our system uses swap, and then we'll also
+
+2
+00:00:05.280 --> 00:00:11.665
+investigate how the Out of Memory killer, or OOM killer, can be invoked.
+
+3
+00:00:11.665 --> 00:00:16.250
+This is on a Fedora 25 virtual machine.
+
+4
+00:00:16.250 --> 00:00:20.370
+So, you can see I have running on the left here a GNOME system monitor,
+
+5
+00:00:20.370 --> 00:00:25.725
+and the middle graph here is the one we're interested in, is about memory.
+
+6
+00:00:25.725 --> 00:00:31.819
+Not much is happening, of course, and it says I have 3.8 gigabytes,
+
+7
+00:00:31.819 --> 00:00:37.175
+I'm using 1.4. And then, it says of my swap I have a gigabyte here,
+
+8
+00:00:37.175 --> 00:00:40.155
+but I'm using zero of it.
+
+9
+00:00:40.155 --> 00:00:45.635
+So, I can get the same information here by saying "free -m",
+
+10
+00:00:45.635 --> 00:00:47.790
+and it's telling me the same,
+
+11
+00:00:47.790 --> 00:00:51.035
+I have a total of 3932 megabytes,
+
+12
+00:00:51.035 --> 00:00:56.115
+and I have 1019 in swap, of which 0 is being used.
+
+13
+00:00:56.115 --> 00:01:03.400
+Now, we have a little program here called "wastemem", which I should compile.
+
+14
+00:01:08.150 --> 00:01:12.200
+All this program does is it adds memory
+
+15
+00:01:12.200 --> 00:01:17.960
+one megabyte at a time up to a number given as an argument,
+
+16
+00:01:17.960 --> 00:01:21.890
+and then it waits 5 seconds, and then releases the memory.
+
+17
+00:01:21.890 --> 00:01:23.955
+So, it's just a way to tie up your memory.
+
+18
+00:01:23.955 --> 00:01:27.215
+So, let me run wastemem,
+
+19
+00:01:27.215 --> 00:01:32.880
+and I have less than 3 gigabytes free,
+
+20
+00:01:32.880 --> 00:01:37.420
+so let me ask for 3,000 megabytes.
+
+21
+00:01:37.420 --> 00:01:42.550
+Then, you see on the left here, it's adding one at a time,
+
+22
+00:01:42.550 --> 00:01:46.290
+and in the graph in the middle here, on the GNOME system memory,
+
+23
+00:01:46.290 --> 00:01:48.565
+the memory usage is going up.
+
+24
+00:01:48.565 --> 00:01:51.045
+When it uses all available memory,
+
+25
+00:01:51.045 --> 00:01:54.320
+it will start to use swap, and that's indeed what happened.
+
+26
+00:01:54.320 --> 00:01:57.900
+I wind up using about 400 megabytes of swap.
+
+27
+00:01:57.900 --> 00:01:59.480
+So, that's what I expected.
+
+28
+00:01:59.480 --> 00:02:03.155
+Now, I've released memory, so the memory usage is going down,
+
+29
+00:02:03.155 --> 00:02:04.960
+so that's all as expected.
+
+30
+00:02:04.960 --> 00:02:08.720
+But, let's see what happens if I turn off swap, and that's easy with
+
+31
+00:02:08.720 --> 00:02:13.590
+the command "sudo swapoff -a",
+
+32
+00:02:13.590 --> 00:02:15.905
+that will turn off all swap,
+
+33
+00:02:15.905 --> 00:02:19.660
+partitions and swap files on the system.
+
+34
+00:02:19.660 --> 00:02:27.150
+You can see over here, in the system monitor, it's gradually reducing the amount of swap.
+
+35
+00:02:27.150 --> 00:02:31.040
+It takes a little bit of time because it has to copy over
+
+36
+00:02:31.040 --> 00:02:35.255
+things from the swap area back into resident memory.
+
+37
+00:02:35.255 --> 00:02:37.495
+So, the memory use will go up a little bit,
+
+38
+00:02:37.495 --> 00:02:39.220
+and so it's almost done.
+
+39
+00:02:39.220 --> 00:02:41.810
+So now, I have no swap on the system.
+
+40
+00:02:41.810 --> 00:02:47.030
+That means if I try to ask for 3 gigabytes again,
+
+41
+00:02:47.030 --> 00:02:50.090
+it is not available and I can't spill over into swaps.
+
+42
+00:02:50.090 --> 00:02:53.800
+Let's try that again and see what happens.
+
+43
+00:02:55.320 --> 00:03:01.910
+You see now at 2617 is getting hung up, and everything disappeared.
+
+44
+00:03:01.910 --> 00:03:05.120
+So, what happened? The Out of Memory killer was invoked.
+
+45
+00:03:05.120 --> 00:03:10.560
+So, let's open up a terminal and try to see what happened here a little bit.
+
+46
+00:03:10.560 --> 00:03:14.675
+I'll just use a blue background, and I'll get a bigger font.
+
+47
+00:03:14.675 --> 00:03:22.630
+Well, I could investigate in detail, but let me just type "dmesg" and get kernel messages.
+
+48
+00:03:22.630 --> 00:03:26.250
+Let me make that bigger.
+
+49
+00:03:28.650 --> 00:03:33.605
+There's a long set of output before that. It runs through everything on the system,
+
+50
+00:03:33.605 --> 00:03:37.030
+it reports its so-called OOM score,
+
+51
+00:03:37.030 --> 00:03:38.880
+what the priority is,
+
+52
+00:03:38.880 --> 00:03:41.900
+with killing the thing, but you see here, out of memory.
+
+53
+00:03:41.900 --> 00:03:44.410
+It killed wastemem, that was the guilty party.
+
+54
+00:03:44.410 --> 00:03:47.500
+It was using all the memory and not doing anything useful.
+
+55
+00:03:47.500 --> 00:03:51.620
+It killed that, but it also killed the shell that was running in, as
+
+56
+00:03:51.620 --> 00:03:55.310
+well as the GNOME system monitor, which is being run in the same shell.
+
+57
+00:03:55.310 --> 00:03:58.575
+But now the system is healthy and running okay.
+
+58
+00:03:58.575 --> 00:04:01.760
+So, that's a demonstration of the use of swap, as well as
+
+59
+00:04:01.760 --> 00:04:05.640
+the functionality of the Out of Memory killer.

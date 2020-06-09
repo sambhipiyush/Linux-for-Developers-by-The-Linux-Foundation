@@ -23,7 +23,7 @@ by The Linux Foundation
 
 #
 * How device management goes, it's pretty complicated to make sure that when a device is added to the system or found at boot, that it's handled properly?
-	* Linux uses something called udev, or user device as a facility in order to enable this
+	* Linux uses something called **udev**, or **user device** as a facility in order to enable this
 #
 * Basic Commands and Utilities
 	* Many basic commands and utilities are the same in Linux and other UNIX-like operating systems

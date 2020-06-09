@@ -1,0 +1,141 @@
+WEBVTT
+
+1
+00:00:00.740 --> 00:00:08.219
+We're now going to show a very simple use of the user device, or udev system,
+
+2
+00:00:08.219 --> 00:00:13.590
+which makes sure that the system recognizes any new devices which are plugged in,
+
+3
+00:00:13.590 --> 00:00:15.790
+and also recognizes when they're removed.
+
+4
+00:00:15.790 --> 00:00:18.690
+For this we're going to use a simple USB key.
+
+5
+00:00:18.690 --> 00:00:22.440
+So, in one window on my desktop we're going to
+
+6
+00:00:22.440 --> 00:00:26.535
+just monitor kernel messages by typing "dmesg".
+
+7
+00:00:26.535 --> 00:00:32.800
+We'll give it the "-w" option [dmesg -w], which means continuously update as new messages come in.
+
+8
+00:00:32.800 --> 00:00:36.180
+So, I'm going to hit return a few times, just to
+
+9
+00:00:36.180 --> 00:00:40.040
+separate out the new input from what was already there.
+
+10
+00:00:40.040 --> 00:00:48.705
+In my other window, I'm going to see what's there in my device for hard disk nodes.
+
+11
+00:00:48.705 --> 00:00:55.100
+You'll see I have a number of partitions in /sda,
+
+12
+00:00:55.100 --> 00:00:57.290
+which is an SSD, and /sdb,
+
+13
+00:00:57.290 --> 00:01:01.765
+which is a USB disk that's already inserted.
+
+14
+00:01:01.765 --> 00:01:11.710
+So now I'm going to plug in to a USB port a USB key,
+
+15
+00:01:13.010 --> 00:01:15.570
+and you see on the left, in
+
+16
+00:01:15.570 --> 00:01:20.265
+the dmesg window, it recognized there was a mass storage device.
+
+17
+00:01:20.265 --> 00:01:22.470
+A SCSI removable disk.
+
+18
+00:01:22.470 --> 00:01:24.630
+If I look over here,
+
+19
+00:01:24.630 --> 00:01:31.005
+I see "ls -l /dev/sd*" again.
+
+20
+00:01:31.005 --> 00:01:33.240
+And now we'll see these new entries here,
+
+21
+00:01:33.240 --> 00:01:35.690
+/sdc, and /sdc1, and /sdc2.
+
+22
+00:01:35.690 --> 00:01:38.380
+That means there's two partitions on the new disk.
+
+23
+00:01:38.380 --> 00:01:41.390
+If I open with files down here,
+
+24
+00:01:41.390 --> 00:01:45.845
+we'll see that this is actually a Red Hat 7 install disk.
+
+25
+00:01:45.845 --> 00:01:52.505
+Okay, so that's actually what's on the USB stick.
+
+26
+00:01:52.505 --> 00:01:59.430
+Then, I should unmount it before I remove it.
+
+27
+00:01:59.430 --> 00:02:01.620
+But since I haven't done anything, I'll be sloppy,
+
+28
+00:02:01.620 --> 00:02:03.720
+and I'll just pull it out.
+
+29
+00:02:05.990 --> 00:02:12.480
+And you see the new messages appeared on the left saying "USB disconnect".
+
+30
+00:02:12.480 --> 00:02:19.215
+And if I look again at what devices are actually there in the device directory,
+
+31
+00:02:19.215 --> 00:02:21.135
+you'll see it's gone again.
+
+32
+00:02:21.135 --> 00:02:23.210
+So, that's a simple demonstration of
+
+33
+00:02:23.210 --> 00:02:27.780
+how your system notices when new devices are plugged in,
+
+34
+00:02:27.780 --> 00:02:29.490
+loads the necessary drivers,
+
+35
+00:02:29.490 --> 00:02:31.610
+and makes them available.

@@ -1,0 +1,265 @@
+WEBVTT
+
+1
+00:00:01.010 --> 00:00:05.594
+We're now going to get some practice starting and stopping,
+
+2
+00:00:05.594 --> 00:00:10.120
+enabling and disabling services with systemd. There's
+
+3
+00:00:10.120 --> 00:00:15.020
+only one utility that we really need to use to do that, systemctl.
+
+4
+00:00:15.020 --> 00:00:20.110
+This computer has two different hypervisors installed on the system.
+
+5
+00:00:20.110 --> 00:00:23.670
+The first one being VirtualBox from Oracle and the
+
+6
+00:00:23.670 --> 00:00:27.630
+second one being VMWare player from VMware.
+
+7
+00:00:27.630 --> 00:00:30.925
+So, first, let me show that there are no currently
+
+8
+00:00:30.925 --> 00:00:36.450
+any kernel modules loaded that come from either program.
+
+9
+00:00:36.450 --> 00:00:38.795
+So, if I do "lsmod",
+
+10
+00:00:38.795 --> 00:00:44.790
+I don't see anything recognizable as coming from VirtualBox or VMware.
+
+11
+00:00:44.790 --> 00:00:48.750
+So, first, let's work with VirtualBox.
+
+12
+00:00:48.750 --> 00:00:57.860
+I can do "sudo systemctl status vboxdrv"
+
+13
+00:00:57.860 --> 00:01:04.185
+vbox drive, and it shows it's not currently loaded, that it's inactive.
+
+14
+00:01:04.185 --> 00:01:13.965
+So, let me start it, and then do the status again.
+
+15
+00:01:13.965 --> 00:01:18.560
+And you see now it says that is currently running and
+
+16
+00:01:18.560 --> 00:01:23.555
+that it started the VirtualBox kernel module. If I do an "lsmod",
+
+17
+00:01:23.555 --> 00:01:29.910
+indeed, you see those first four modules, they are associated with VirtualBox.
+
+18
+00:01:29.910 --> 00:01:32.855
+Once again, I can disable it,
+
+19
+00:01:32.855 --> 00:01:36.560
+so let me do that with "sudo systemctl
+
+20
+00:01:36.560 --> 00:01:41.265
+stop vboxdrv".
+
+21
+00:01:41.470 --> 00:01:46.175
+This time I'm going to append ".service" to it, which a lot of
+
+22
+00:01:46.175 --> 00:01:51.535
+documentation tells you you should generally do with most systemd services.
+
+23
+00:01:51.535 --> 00:01:54.750
+Then, if I do the status again,
+
+24
+00:01:56.980 --> 00:02:01.300
+you'll see that it's currently not running.
+
+25
+00:02:01.300 --> 00:02:03.910
+For most things, you don't really need to add
+
+26
+00:02:03.910 --> 00:02:10.260
+the ".service" because there are some other possibilities that can go as extensions there,
+
+27
+00:02:10.260 --> 00:02:14.340
+but most of the time, you can omit it and things will be just fine.
+
+28
+00:02:14.340 --> 00:02:18.850
+Okay. So, now let's do the same exercise with VMware.
+
+29
+00:02:18.850 --> 00:02:20.690
+So, let me do "sudo
+
+30
+00:02:20.690 --> 00:02:29.910
+systemctl status vmware".
+
+31
+00:02:29.910 --> 00:02:34.220
+Okay. It says that it's not currently loaded
+
+32
+00:02:34.220 --> 00:02:38.690
+and you notice that it mentiones the "systemd-sysv-generator",
+
+33
+00:02:38.690 --> 00:02:44.470
+that's because VMware has not configured this on the system as a proper systemd service,
+
+34
+00:02:44.470 --> 00:02:48.565
+it's still set up basically as a SysVinit service,
+
+35
+00:02:48.565 --> 00:02:51.890
+and so there's a compatibility layer that goes with
+
+36
+00:02:51.890 --> 00:02:58.385
+systemd that redirects the commands to more old-fashion System V commands.
+
+37
+00:02:58.385 --> 00:03:01.000
+If I want to start the service,
+
+38
+00:03:01.000 --> 00:03:03.515
+and I can just do that once again with start.
+
+39
+00:03:03.515 --> 00:03:09.575
+Then, if I do lsmod, now,
+
+40
+00:03:09.575 --> 00:03:14.045
+you'll see there's several modules associated with VMWare,
+
+41
+00:03:14.045 --> 00:03:17.945
+also four modules, actually five modules in this case.
+
+42
+00:03:17.945 --> 00:03:23.470
+If I do a status command again,
+
+43
+00:03:24.340 --> 00:03:28.285
+it tells you quite a bit about what's actually running.
+
+44
+00:03:28.285 --> 00:03:36.940
+Then, I can stop it and do the status command again,
+
+45
+00:03:36.940 --> 00:03:41.100
+and it shows that this query had been stop.
+
+46
+00:03:41.100 --> 00:03:43.200
+Now, in either case,
+
+47
+00:03:43.200 --> 00:03:48.990
+I can set it up so that the services start when the system is loaded,
+
+48
+00:03:48.990 --> 00:03:50.890
+so that I have either VMWare,
+
+49
+00:03:50.890 --> 00:03:55.450
+VirtualBox always available to me without having to manually start it,
+
+50
+00:03:55.450 --> 00:03:59.370
+and I would do that with "sudo systemctl
+
+51
+00:03:59.370 --> 00:04:09.530
+enable vmware", and I can do the same thing with vboxdrv.
+
+52
+00:04:11.170 --> 00:04:13.600
+You'll notice, with VMware,
+
+53
+00:04:13.600 --> 00:04:18.170
+it says it rerouted it to /sbin/chkconfig. That shows chkconfig,
+
+54
+00:04:18.170 --> 00:04:21.350
+which shows you that compatibility layer.
+
+55
+00:04:21.350 --> 00:04:24.190
+But it didn't actually start either one of them.
+
+56
+00:04:24.190 --> 00:04:25.400
+If I do lsmod,
+
+57
+00:04:25.400 --> 00:04:27.080
+you see the modules are not loaded,
+
+58
+00:04:27.080 --> 00:04:29.955
+but next time I boot, they will all be loaded.
+
+59
+00:04:29.955 --> 00:04:34.095
+Now, I don't recommend you run both of these programs at the same time.
+
+60
+00:04:34.095 --> 00:04:38.290
+They do similar things with the Linux kernel and they can get in each other's way,
+
+61
+00:04:38.290 --> 00:04:41.000
+so you should disable at least one of them.
+
+62
+00:04:41.000 --> 00:04:43.910
+So, I will disable VirtualBox.
+
+63
+00:04:43.910 --> 00:04:50.655
+So, do "sudo disable vboxdrv" and then,
+
+64
+00:04:50.655 --> 00:04:53.185
+I forgot to say systemctl.
+
+65
+00:04:53.185 --> 00:04:55.165
+Then, next time the system starts,
+
+66
+00:04:55.165 --> 00:04:57.530
+it will only start VMware.

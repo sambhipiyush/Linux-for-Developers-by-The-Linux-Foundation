@@ -1,0 +1,189 @@
+WEBVTT
+
+1
+00:00:00.170 --> 00:00:03.090
+Let's get a brief look at a few of
+
+2
+00:00:03.090 --> 00:00:07.215
+the system monitoring tools that are available on your system.
+
+3
+00:00:07.215 --> 00:00:09.195
+In the left-hand window here,
+
+4
+00:00:09.195 --> 00:00:11.565
+I'm running gnome-system-monitor,
+
+5
+00:00:11.565 --> 00:00:17.100
+which gives me a graphical picture of CPU history on top,
+
+6
+00:00:17.100 --> 00:00:19.855
+with one line for each CPU on the system.
+
+7
+00:00:19.855 --> 00:00:22.890
+This is a system with four cores,
+
+8
+00:00:22.890 --> 00:00:24.840
+each one of which is hyperthreaded so,
+
+9
+00:00:24.840 --> 00:00:27.775
+it appears as eight CPUs.
+
+10
+00:00:27.775 --> 00:00:31.795
+In the second line we're seeing memory and swap history.
+
+11
+00:00:31.795 --> 00:00:37.050
+So, here's the memory usage in this circular graph here and swap here.
+
+12
+00:00:37.050 --> 00:00:39.930
+Then the third, we're looking at network history,
+
+13
+00:00:39.930 --> 00:00:42.400
+we're seeing both sending and receiving.
+
+14
+00:00:42.400 --> 00:00:45.975
+So, in the window on the top right,
+
+15
+00:00:45.975 --> 00:00:47.720
+I'm going to run top which gives
+
+16
+00:00:47.720 --> 00:00:52.675
+basic process monitoring on my system and in the bottom window,
+
+17
+00:00:52.675 --> 00:00:55.630
+I'm going to run vmstat,
+
+18
+00:00:55.630 --> 00:00:59.960
+with a command of a to show everything and then,
+
+19
+00:00:59.960 --> 00:01:01.390
+I'm going to run it every two seconds,
+
+20
+00:01:01.390 --> 00:01:04.550
+a thousand times, just so it doesn't stop.
+
+21
+00:01:06.000 --> 00:01:08.330
+Then in the lower right here,
+
+22
+00:01:08.330 --> 00:01:11.675
+I'm going to run a very CPU intensive task,
+
+23
+00:01:11.675 --> 00:01:13.310
+which is a kernel compile,
+
+24
+00:01:13.310 --> 00:01:15.680
+which proceeds in parallel on each CPU.
+
+25
+00:01:15.680 --> 00:01:19.145
+So, it's very CPU intensive.
+
+26
+00:01:19.145 --> 00:01:22.590
+So, let me do that.
+
+27
+00:01:23.500 --> 00:01:25.805
+So, that's running now.
+
+28
+00:01:25.805 --> 00:01:27.860
+Then first of all, you'll quickly see that
+
+29
+00:01:27.860 --> 00:01:32.320
+the CPU usage is going to pin up at the top here.
+
+30
+00:01:32.320 --> 00:01:36.225
+It takes a few seconds to cut in but then it's going,
+
+31
+00:01:36.225 --> 00:01:38.845
+all the CPUs are busy at the top here.
+
+32
+00:01:38.845 --> 00:01:42.604
+Also, I can see that in the top output
+
+33
+00:01:42.604 --> 00:01:47.635
+the system is using 80 percent of its CPU time roughly,
+
+34
+00:01:47.635 --> 00:01:49.240
+on user processes,
+
+35
+00:01:49.240 --> 00:01:51.885
+that means compiling and the user space,
+
+36
+00:01:51.885 --> 00:01:55.070
+and about 10 percent during system activity which is
+
+37
+00:01:55.070 --> 00:01:58.200
+going to be handling system calls for the most part.
+
+38
+00:01:58.200 --> 00:02:00.420
+If I hit the number one,
+
+39
+00:02:00.420 --> 00:02:03.250
+I can get a readout for each CPU,
+
+40
+00:02:03.250 --> 00:02:04.870
+instead of just the sum totals,
+
+41
+00:02:04.870 --> 00:02:06.780
+which we now see on the top,
+
+42
+00:02:06.780 --> 00:02:08.715
+you see they're all quite busy.
+
+43
+00:02:08.715 --> 00:02:14.420
+On the bottom here, we can see all the activity going on with the memory on the system.
+
+44
+00:02:14.420 --> 00:02:17.890
+In particular, how many pages are active and inactive,
+
+45
+00:02:17.890 --> 00:02:20.270
+swaps coming in and out,
+
+46
+00:02:20.270 --> 00:02:22.415
+how much space is free, et cetera.
+
+47
+00:02:22.415 --> 00:02:26.600
+So, that's just a brief look at a few of the tools that are available on your system.

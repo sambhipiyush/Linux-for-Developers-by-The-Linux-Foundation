@@ -1,0 +1,269 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.965
+Let's get some practice
+
+2
+00:00:01.965 --> 00:00:08.540
+getting information about loading and unloading kernel modules on an Ubuntu 17.04 system.
+
+3
+00:00:08.540 --> 00:00:14.340
+Now, this system is running the stock kernel that came from Ubuntu.
+
+4
+00:00:14.340 --> 00:00:15.975
+If I do "uname -r",
+
+5
+00:00:15.975 --> 00:00:19.630
+I can see what it is, 4.10.0-20,
+
+6
+00:00:20.000 --> 00:00:26.579
+and I have navigated in advance to the directory
+
+7
+00:00:26.579 --> 00:00:33.780
+/lib/modules/4.10.0-20-generic/kernel/drivers/net/ethernet/3com, where some of
+
+8
+00:00:33.780 --> 00:00:37.380
+the Ethernet drivers appear on the system.
+
+9
+00:00:37.380 --> 00:00:42.505
+So, they make it easier for me to do this without having to type at all.
+
+10
+00:00:42.505 --> 00:00:47.430
+In this directory, there's a well-known,
+
+11
+00:00:47.430 --> 00:00:49.620
+but not used very much anymore,
+
+12
+00:00:49.620 --> 00:01:04.430
+3c59x network card, and if I do "modinfo 3c59x",
+
+13
+00:01:04.430 --> 00:01:08.890
+that gives me information about that module.
+
+14
+00:01:08.890 --> 00:01:11.720
+You'll see it's one of the original ones, written
+
+15
+00:01:11.720 --> 00:01:15.120
+by Donald Becker in the early days of Linux.
+
+16
+00:01:15.120 --> 00:01:18.580
+It gives you information about what it is,
+
+17
+00:01:18.580 --> 00:01:20.310
+its actual version number,
+
+18
+00:01:20.310 --> 00:01:21.805
+the source version number,
+
+19
+00:01:21.805 --> 00:01:27.580
+its license, the alias lines tell you what hardware it works on.
+
+20
+00:01:27.580 --> 00:01:31.060
+This is an important line "depends: mii".
+
+21
+00:01:31.060 --> 00:01:39.125
+That means the media interface extensions module has to be loaded first, the mii.
+
+22
+00:01:39.125 --> 00:01:45.015
+vergmagic tells you the main parameters with which the kernel was loaded.
+
+23
+00:01:45.015 --> 00:01:47.400
+This kernel module was compiled, I mean,
+
+24
+00:01:47.400 --> 00:01:49.280
+so it tells you the version of the kernel,
+
+25
+00:01:49.280 --> 00:01:51.430
+it was a multiprocessor,
+
+26
+00:01:51.430 --> 00:01:55.920
+and that it was a kernel that permits kernel module unloading,
+
+27
+00:01:55.920 --> 00:01:58.490
+and then there's information about parameters that can be
+
+28
+00:01:58.490 --> 00:02:02.645
+supplied to the module when it's loaded on the system.
+
+29
+00:02:02.645 --> 00:02:07.515
+If I want to see what's actually loaded on the system now in terms of kernel modules,
+
+30
+00:02:07.515 --> 00:02:11.420
+I can just type "lsmod" and it's quite a bit, so
+
+31
+00:02:11.420 --> 00:02:18.115
+I'll put it into "less", and you see here's the module names and their size.
+
+32
+00:02:18.115 --> 00:02:21.620
+Under used by, the first field here, is
+
+33
+00:02:21.620 --> 00:02:25.210
+the number of processes that are using the kernel module.
+
+34
+00:02:25.210 --> 00:02:27.680
+So, for instance, this one in particular, there's
+
+35
+00:02:27.680 --> 00:02:31.690
+two different processes on the system that are currently using it.
+
+36
+00:02:31.690 --> 00:02:35.750
+The second field here is other modules which are using the module.
+
+37
+00:02:35.750 --> 00:02:40.570
+So, for instance, the stp module is being used by the bridge module.
+
+38
+00:02:40.570 --> 00:02:42.410
+So, I can't remove
+
+39
+00:02:42.410 --> 00:02:45.790
+the stp module unless I remove
+
+40
+00:02:45.790 --> 00:02:49.765
+bridge as well, because otherwise, the system will have a severe problem.
+
+41
+00:02:49.765 --> 00:02:54.530
+So, let's see what happens if I try to load directly
+
+42
+00:02:54.530 --> 00:03:06.389
+3c59x by doing "sudo insmod 3c59x.ko".
+
+43
+00:03:06.389 --> 00:03:09.720
+And it tells me "Unknown symbol in module".
+
+44
+00:03:09.720 --> 00:03:15.560
+That's because the mii interface module is not currently loaded.
+
+45
+00:03:15.560 --> 00:03:19.910
+If however, I use the modprobe utility which, is smart
+
+46
+00:03:19.910 --> 00:03:24.080
+enough to go get anything else that this network driver needs,
+
+47
+00:03:24.080 --> 00:03:28.350
+so I do "modprobe 3c59x",
+
+48
+00:03:28.360 --> 00:03:31.775
+and of course, I have to do "sudo" on that,
+
+49
+00:03:31.775 --> 00:03:33.270
+it worked just fine.
+
+50
+00:03:33.270 --> 00:03:37.435
+If I do "lsmod" and just look at the first few,
+
+51
+00:03:37.435 --> 00:03:42.280
+you'll see it loaded not just 3c59x, but mii.
+
+52
+00:03:42.280 --> 00:03:45.679
+Now, we're actually not going to use this driver,
+
+53
+00:03:45.679 --> 00:03:48.155
+network card driver, so I might as well remove it,
+
+54
+00:03:48.155 --> 00:03:50.270
+so I can do that with
+
+55
+00:03:50.270 --> 00:04:01.860
+"sudo modprobe -r 3c59x".
+
+56
+00:04:01.860 --> 00:04:05.920
+No complaints. And if I do "lsmod",
+
+57
+00:04:06.470 --> 00:04:09.240
+you'll see now they're both gone.
+
+58
+00:04:09.240 --> 00:04:14.510
+If I were to type "dmesg" and just look at the last bunch of lines,
+
+59
+00:04:14.510 --> 00:04:19.315
+so "dmesg tail", let's say "30",
+
+60
+00:04:19.315 --> 00:04:21.950
+I get the less 30 lines,
+
+61
+00:04:22.020 --> 00:04:24.430
+but I forgot the dash there [dmesg | tail -30].
+
+62
+00:04:24.430 --> 00:04:28.405
+Okay. You'll see exactly what went on here,
+
+63
+00:04:28.405 --> 00:04:32.030
+it said "Unknown symbol mii_ethtool", etc.
+
+64
+00:04:32.030 --> 00:04:37.220
+So, it's telling me that it couldn't load it because I didn't load the other module first.
+
+65
+00:04:37.220 --> 00:04:42.520
+So, that's a quick primer into main commands for dealing with modules,
+
+66
+00:04:42.520 --> 00:04:45.135
+which are insmod or mmod,
+
+67
+00:04:45.135 --> 00:04:49.600
+modprobe, lsmod and modinfo.

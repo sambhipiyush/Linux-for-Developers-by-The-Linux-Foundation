@@ -3,6 +3,7 @@
 #### Instructor(s) : Jerry Cooperstein
 
 ## About this Course
+
 In course 1 we talked about open source software and the motivation and methods of using it. In course 2, we will introduce you to Linux systems, and help you feel comfortable working at the command line:
 
 #### What Linux is

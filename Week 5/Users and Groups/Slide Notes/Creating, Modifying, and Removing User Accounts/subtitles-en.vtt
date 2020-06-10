@@ -1,0 +1,213 @@
+WEBVTT
+
+1
+00:00:00.920 --> 00:00:04.410
+Let's get some experience with creating,
+
+2
+00:00:04.410 --> 00:00:07.485
+modifying and removing a new user account.
+
+3
+00:00:07.485 --> 00:00:10.945
+We will do this on Ubuntu 17.04.
+
+4
+00:00:10.945 --> 00:00:17.085
+There are some variations between distributions about what exactly is created,
+
+5
+00:00:17.085 --> 00:00:23.470
+whether a new account is created and exactly which files are there, etc.
+
+6
+00:00:23.470 --> 00:00:31.255
+This is mostly controlled by a file under /etc/default/useradd appropriately named.
+
+7
+00:00:31.255 --> 00:00:33.210
+So, you can see, for example,
+
+8
+00:00:33.210 --> 00:00:39.390
+in here, the default shell is set to be SHELL=/bin/sh.
+
+9
+00:00:39.390 --> 00:00:43.265
+Now, on some distributions, such as Red Hat, this file is rather
+
+10
+00:00:43.265 --> 00:00:47.815
+short and not very well documented, on Ubuntu is rather long.
+
+11
+00:00:47.815 --> 00:00:53.170
+So, let's create the account: "sudo useradd".
+
+12
+00:00:53.170 --> 00:00:58.140
+I'll say, "-m" to make sure it creates a home directory.
+
+13
+00:00:58.140 --> 00:01:02.705
+Some distributions do not do that by default.
+
+14
+00:01:02.705 --> 00:01:04.270
+Ubuntu does not,
+
+15
+00:01:04.270 --> 00:01:06.665
+for instance, and neither does openSUSE.
+
+16
+00:01:06.665 --> 00:01:12.480
+I'll give the full name to be "Eric Dolphy".
+
+17
+00:01:12.480 --> 00:01:18.425
+I'll specify the default shell to be /bin/bash with the "-s" option,
+
+18
+00:01:18.425 --> 00:01:23.005
+and here's the name edolphy [sudo useradd -m -c "Eric Dolphy" -s /bin/bash edolphy].
+
+19
+00:01:23.005 --> 00:01:26.900
+Now, I still have to pass assess via password.
+
+20
+00:01:26.900 --> 00:01:32.500
+So, I'll do that with "sudo passwd edolphy".
+
+21
+00:01:32.720 --> 00:01:35.895
+Then, I type something,
+
+22
+00:01:35.895 --> 00:01:38.710
+and now the account exists.
+
+23
+00:01:38.710 --> 00:01:44.480
+I can verify that by making sure entries were made in
+
+24
+00:01:44.480 --> 00:01:50.830
+the /etc/passwd file and /etc/group [grep edolphy /etc/passwd /etc/group],
+
+25
+00:01:50.830 --> 00:01:52.440
+and there we go.
+
+26
+00:01:52.440 --> 00:01:55.570
+Notice it is now user 1001.
+
+27
+00:01:55.570 --> 00:02:00.575
+Remember, normal users start at 1,000, and student is user 1,000,
+
+28
+00:02:00.575 --> 00:02:03.095
+and so that's appropriate.
+
+29
+00:02:03.095 --> 00:02:08.755
+Also, the other information I specified is there, such as the full username,
+
+30
+00:02:08.755 --> 00:02:11.165
+and the shell /bin/bash,
+
+31
+00:02:11.165 --> 00:02:14.930
+and the group is set to be 1001,
+
+32
+00:02:14.930 --> 00:02:17.760
+which is the same ID as the user.
+
+33
+00:02:17.760 --> 00:02:24.055
+All users are created with at least one group that has the same number as their username.
+
+34
+00:02:24.055 --> 00:02:26.900
+Now, let's actually try to log into that account,
+
+35
+00:02:26.900 --> 00:02:34.340
+and I'll do that with "ssh edolphy@localhost".
+
+36
+00:02:34.340 --> 00:02:37.259
+I'll give the password,
+
+37
+00:02:37.360 --> 00:02:40.730
+and I succeeded just fine.
+
+38
+00:02:40.730 --> 00:02:44.330
+So, let's see what's actually in that directory.
+
+39
+00:02:45.000 --> 00:02:47.180
+You'll see there isn't much,
+
+40
+00:02:47.180 --> 00:02:50.520
+but these are files that all new users get.
+
+41
+00:02:50.520 --> 00:02:52.970
+Let me log out now.
+
+42
+00:02:52.970 --> 00:02:58.210
+That's controlled by whatever's in the /etc/skel directory,
+
+43
+00:02:58.210 --> 00:03:00.050
+anything you put in there.
+
+44
+00:03:00.050 --> 00:03:02.075
+Let me do the "-a" option [ls -la /etc/skel].
+
+45
+00:03:02.075 --> 00:03:03.780
+Anything you put in there,
+
+46
+00:03:03.780 --> 00:03:09.720
+will show up in any new user's account.
+
+47
+00:03:09.720 --> 00:03:12.070
+So, let's just clean up,
+
+48
+00:03:12.070 --> 00:03:18.870
+and I'll do that with "userdel -r edolphy".
+
+49
+00:03:19.350 --> 00:03:26.525
+The r is necessary to make sure it removes the home directory.
+
+50
+00:03:26.525 --> 00:03:31.520
+You'll notice, I get a warning message about not having created a mail spool file,
+
+51
+00:03:31.520 --> 00:03:35.405
+that's harmless, and if I do "ls -l /home" now,
+
+52
+00:03:35.405 --> 00:03:37.175
+we see the account has gone.
+
+53
+00:03:37.175 --> 00:03:39.700
+So, we're all cleaned up.

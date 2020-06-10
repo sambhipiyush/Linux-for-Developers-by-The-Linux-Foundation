@@ -1,0 +1,233 @@
+WEBVTT
+
+1
+00:00:00.590 --> 00:00:04.230
+In our discussion of package management systems,
+
+2
+00:00:04.230 --> 00:00:07.355
+we will be concentrating on using the command line.
+
+3
+00:00:07.355 --> 00:00:12.535
+However, all Linux distributions have at least one graphical interface.
+
+4
+00:00:12.535 --> 00:00:16.890
+One graphical interface is known as gnome-software,
+
+5
+00:00:16.890 --> 00:00:22.730
+and is available on any distribution that is running with a GNOME desktop.
+
+6
+00:00:22.730 --> 00:00:24.840
+So, first thing we need to do,
+
+7
+00:00:24.840 --> 00:00:27.780
+is to make sure that it's actually installed on our system.
+
+8
+00:00:27.780 --> 00:00:31.240
+So, I'll do "which gnome-software",
+
+9
+00:00:35.560 --> 00:00:39.000
+and it is not installed on the system.
+
+10
+00:00:39.000 --> 00:00:43.825
+So, I'll do "sudo yum install gnome-software",
+
+11
+00:00:43.825 --> 00:00:45.380
+using the yum command,
+
+12
+00:00:45.380 --> 00:00:48.265
+which we will discuss in great detail later.
+
+13
+00:00:48.265 --> 00:00:50.780
+It's only going to be a couple of megabytes.
+
+14
+00:00:50.780 --> 00:00:52.490
+So, we install that,
+
+15
+00:00:52.490 --> 00:00:54.585
+and now I'll launch it from the command line.
+
+16
+00:00:54.585 --> 00:00:58.260
+Just type in "gnome-software".
+
+17
+00:00:59.300 --> 00:01:02.630
+Notice, I'm running this as a normal user,
+
+18
+00:01:02.630 --> 00:01:06.000
+if it needs to actually install or remove something,
+
+19
+00:01:06.000 --> 00:01:08.520
+it will ask me for the password.
+
+20
+00:01:11.360 --> 00:01:13.425
+So, as it comes up,
+
+21
+00:01:13.425 --> 00:01:17.495
+it looks pretty much like an app store or Gnome Play Store,
+
+22
+00:01:17.495 --> 00:01:20.810
+where it shows by groupings,
+
+23
+00:01:20.810 --> 00:01:24.040
+by Category, the different things that are available.
+
+24
+00:01:24.040 --> 00:01:26.800
+So, for instance, if I were to click on System,
+
+25
+00:01:26.800 --> 00:01:28.700
+you'll see I have Featured,
+
+26
+00:01:28.700 --> 00:01:29.990
+I have File Manager,
+
+27
+00:01:29.990 --> 00:01:31.710
+I have File System,
+
+28
+00:01:31.710 --> 00:01:34.975
+File tools, et cetera, monitoring security.
+
+29
+00:01:34.975 --> 00:01:37.900
+So let's say, I were to go on Terminal Emulator.
+
+30
+00:01:37.900 --> 00:01:45.250
+Okay. I do not have XTerm installed on my system.
+
+31
+00:01:45.250 --> 00:01:47.540
+That's a very old-fashioned terminal program.
+
+32
+00:01:47.540 --> 00:01:51.980
+So, for Fran, it does say installed, actually, underneath it.
+
+33
+00:01:51.980 --> 00:01:55.855
+But here is an even more ancient one, X3270.
+
+34
+00:01:55.855 --> 00:01:58.460
+So, let's see what happens if I click on it,
+
+35
+00:01:58.460 --> 00:02:03.964
+it's asking me if I want to install it, and for that, it wants my password.
+
+36
+00:02:03.964 --> 00:02:08.120
+This is the root password on a Red Hat system,
+
+37
+00:02:08.120 --> 00:02:09.610
+this is CentOS 7.
+
+38
+00:02:09.610 --> 00:02:15.380
+So, it's now installed and I could launch it here if I wanted to see what it does,
+
+39
+00:02:15.380 --> 00:02:16.860
+but I'll dispense with that.
+
+40
+00:02:16.860 --> 00:02:19.475
+Let me remove it because I don't really need it.
+
+41
+00:02:19.475 --> 00:02:21.575
+So, now it's removed.
+
+42
+00:02:21.575 --> 00:02:25.020
+Once again it's asking me for my password.
+
+43
+00:02:25.930 --> 00:02:28.460
+Okay, and it's done.
+
+44
+00:02:28.460 --> 00:02:32.440
+And then let's go back to the main menu.
+
+45
+00:02:32.680 --> 00:02:36.625
+If I click on Installed applications,
+
+46
+00:02:36.625 --> 00:02:38.595
+I can pick on one, say,
+
+47
+00:02:38.595 --> 00:02:44.455
+Cheese, which is a program for taking your picture or a video of yourself.
+
+48
+00:02:44.455 --> 00:02:47.090
+It's good for testing your webcam.
+
+49
+00:02:47.090 --> 00:02:49.510
+So, let's say I want to remove that,
+
+50
+00:02:49.510 --> 00:02:51.955
+I'll say yes I want to remove it.
+
+51
+00:02:51.955 --> 00:02:55.570
+And notice it didn't ask me for the password again.
+
+52
+00:02:55.570 --> 00:02:58.810
+Well, let's put it back because I'd kind of like to have it.
+
+53
+00:02:58.810 --> 00:03:01.460
+So, I'll click Install,
+
+54
+00:03:02.120 --> 00:03:05.440
+and now it's installed again.
+
+55
+00:03:06.530 --> 00:03:09.220
+So, in the succeeding sections,
+
+56
+00:03:09.220 --> 00:03:14.510
+we will now discuss the command line interfaces beginning with the lower level commands
+
+57
+00:03:14.510 --> 00:03:20.495
+like rpm and dpkg and then, continuing with the higher level commands like yum,
+
+58
+00:03:20.495 --> 00:03:25.740
+dnf, zypper and apt-get. Thank you.

@@ -1,0 +1,129 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.998
+Let's get some practice with the basic low-level command for
+
+2
+00:00:05.998 --> 00:00:11.326
+the Debian packaging system, dpkg, or d-package.
+
+3
+00:00:11.326 --> 00:00:14.747
+So, to get a list of all the packages on this system,
+
+4
+00:00:14.747 --> 00:00:19.035
+I can simply type "dpkg --list".
+
+5
+00:00:19.035 --> 00:00:24.960
+And I'll just pipe that into "less", because it's a long list [dpkg --list | less].
+
+6
+00:00:24.960 --> 00:00:31.202
+Okay, actually, if I don't use "less", for some reason, it's more compact.
+
+7
+00:00:31.202 --> 00:00:36.400
+Okay, so there are a lot of different packages on the system.
+
+8
+00:00:36.400 --> 00:00:41.529
+Now, if I want to see some information just about a particular package,
+
+9
+00:00:41.529 --> 00:00:47.199
+I could just grep, let's say, bzip2 to see what's going on with bzip2 [dpkg --list | grep bzip2].
+
+10
+00:00:47.199 --> 00:00:52.156
+And that's the information about bzip2 that tells us the version number,
+
+11
+00:00:52.156 --> 00:00:55.022
+the architecture, which here is amd64,
+
+12
+00:00:55.022 --> 00:01:00.151
+and it's description as a high quality block sorting file compressor utility.
+
+13
+00:01:00.151 --> 00:01:05.963
+So it's a more advanced program of better compression than gzip or
+
+14
+00:01:05.963 --> 00:01:08.362
+the old fashion zip program.
+
+15
+00:01:08.362 --> 00:01:14.798
+If I want to see what's actually contained in that package,
+
+16
+00:01:14.798 --> 00:01:20.236
+I can do "dpkg --listfiles", and then the name of it [dpkg --listfiles bzip2].
+
+17
+00:01:20.236 --> 00:01:24.395
+And then I'll go slower by putting into less [dpkg --listfiles bzip2 | less].
+
+18
+00:01:24.395 --> 00:01:28.163
+And you see there is the executables in the /bin directory.
+
+19
+00:01:28.163 --> 00:01:31.609
+And then what's under /user is basically documentation.
+
+20
+00:01:31.609 --> 00:01:35.738
+Under /user/share/doc, /user/share/man, etc.
+
+21
+00:01:35.738 --> 00:01:40.419
+If I try to remove the package,
+
+22
+00:01:40.419 --> 00:01:43.743
+let's see what happens.
+
+23
+00:01:43.743 --> 00:01:46.843
+So do "sudo dpkg" and, of course,
+
+24
+00:01:46.843 --> 00:01:52.175
+I have to have root privilege to remove the package.
+
+25
+00:01:52.175 --> 00:01:57.529
+So I'm removing bzip2, "sudo dpkg --remove bzip2".
+
+26
+00:01:57.529 --> 00:02:03.793
+And it's telling me I cannot do this because I need the development package,
+
+27
+00:02:03.793 --> 00:02:06.975
+dpkg-dev, that would be headers and
+
+28
+00:02:06.975 --> 00:02:11.663
+stuff for programs which use this in a library version.
+
+29
+00:02:11.663 --> 00:02:16.043
+And fire-roller, which is an archive extractor that's prominent on Linux
+
+30
+00:02:16.043 --> 00:02:19.292
+systems, so I would have to remove all three of them.
+
+31
+00:02:19.292 --> 00:02:21.612
+We'll see later when we use tools like apt-get,
+
+32
+00:02:21.612 --> 00:02:24.005
+it's easier to deal with these dependencies.
